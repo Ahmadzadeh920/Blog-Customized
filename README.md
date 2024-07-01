@@ -7,5 +7,5 @@ A simplified version of a posting messages application. There is no goal here, i
 # Features
 - Setting up project with Docker (dockerfile/docker-compose)
 - Setup Django Model for a Blog 
-- Setup customized Authentication by AbstractBaseUser
-- Implement Class Based Views for Blog models
+- Setup customized Authentication by AbstractBaseUser in the accounts app
+- Implement Class Based Views for Blog models in the blop app
