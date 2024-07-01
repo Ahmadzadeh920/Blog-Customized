@@ -1,3 +1,6 @@
 django==4.2
 tzdata-2024.1
 python-decouple
+djangorestframework
+markdown       # Markdown support for the browsable API.
+django-filter  # Filtering support
