@@ -1,8 +1,8 @@
 # Guideline
-- [Introduction](#Messages App)
-- [Features](#Features)
-# Messages App
 A simplified version of a posting messages application. There is no goal here, it was created for demonstration purpose only.
+
+- [Features](#Features)
+
 
 # Features
 - Setting up project with Docker (dockerfile/docker-compose)
