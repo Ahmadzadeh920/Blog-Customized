@@ -9,29 +9,45 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('accounts', '0002_alter_customuser_created_at_profile'),
+        ("accounts", "0002_alter_customuser_created_at_profile"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.IntegerField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=250)),
+                ("id", models.IntegerField(primary_key=True, serialize=False)),
+                ("name", models.CharField(max_length=250)),
             ],
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.IntegerField(primary_key=True, serialize=False)),
-                ('body', models.TextField()),
-                ('img', models.ImageField(blank=True, null=True, upload_to='')),
-                ('title', models.CharField(max_length=250)),
-                ('status', models.BooleanField(default=False)),
-                ('created_date', models.DateField()),
-                ('updated_date', models.DateField()),
-                ('author', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='accounts.profile')),
-                ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='blog.category')),
+                ("id", models.IntegerField(primary_key=True, serialize=False)),
+                ("body", models.TextField()),
+                ("img", models.ImageField(blank=True, null=True, upload_to="")),
+                ("title", models.CharField(max_length=250)),
+                ("status", models.BooleanField(default=False)),
+                ("created_date", models.DateField()),
+                ("updated_date", models.DateField()),
+                (
+                    "author",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="accounts.profile",
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="blog.category",
+                    ),
+                ),
             ],
         ),
     ]

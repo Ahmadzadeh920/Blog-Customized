@@ -4,3 +4,8 @@ python-decouple
 djangorestframework
 markdown       # Markdown support for the browsable API.
 django-filter  # Filtering support
+
+
+# refactoring
+flack8
+black
