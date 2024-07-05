@@ -13,6 +13,11 @@
 # Guideline
 - [Guideline](#Guideline)
 - [Features](#goal)
+- - [Development usage](#development-usage)
+  - [Clone the repo](#clone-the-repo)
+  - [Enviroment Varibales](#enviroment-varibales)
+  - [Build everything](#build-everything)
+
 - [Testing Usage](#testing-usage)
   - [running all tests](#running-all-tests)
 - [License](#license)
