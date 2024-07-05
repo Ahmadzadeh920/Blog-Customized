@@ -13,8 +13,6 @@
 # Guideline
 - [Guideline](#Guideline)
 - [Features](#goal)
-- [Development usage](#development-usage)
-- [Database Design](#database-design)
 - [Testing Usage](#testing-usage)
   - [running all tests](#running-all-tests)
 - [License](#license)
@@ -33,3 +31,9 @@ A simplified version of a posting messages application. There is no goal here, i
 - Setup Django Model for a Blog 
 - Setup customized Authentication by AbstractBaseUser in the accounts app
 - Implement Class Based Views for Blog models in the blog app
+# License
+MIT.
+
+
+# Bugs
+Feel free to let me know if something needs to be fixed. or even any features seems to be needed in this repo.
