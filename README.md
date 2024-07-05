@@ -1,6 +1,6 @@
 <div align="center">
-<h1 align="center">FastAPI Blog With Authentication App</h1>
-<h3 align="center">Sample Project to use fast api with base usage and deployment</h3>
+<h1 align="center">Customized Blog (template-based and restframework)</h1>
+<h3 align="center">Sample Project with base usage and deployment</h3>
 </div>
 <p align="center">
 <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a>
