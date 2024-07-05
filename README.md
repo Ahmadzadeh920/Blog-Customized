@@ -3,6 +3,7 @@
 <h3 align="center">Sample Project with base usage and deployment</h3>
 </div>
 <p align="center">
+<a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=mUBILbYvUMq8&format=png&color=000000" alt="python" width="40" height="40"/> </a>
 <a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=qV-JzWYl9dzP&format=png&color=000000" alt="python" width="40" height="40"/> </a>
 
 <a href="https://www.docker.com/" target="_blank"> <img src="https://img.icons8.com/?size=100&id=zFAYIdFZlGxP&format=png&color=000000" alt="docker" width="40" height="40"/> </a>
