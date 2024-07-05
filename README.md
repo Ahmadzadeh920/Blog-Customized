@@ -4,9 +4,7 @@
 </div>
 <p align="center">
 <a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=qV-JzWYl9dzP&format=png&color=000000" alt="python" width="40" height="40"/> </a>
-<a href="https://www.djangoproject.com/">
-  <img src="https://img.icons8.com/?size=100&id=qV-JzWYl9dzP&format=png&color=000000" alt="Django Icon">
-</a>
+
 <a href="https://www.docker.com/" target="_blank"> <img src="https://img.icons8.com/?size=100&id=zFAYIdFZlGxP&format=png&color=000000" alt="docker" width="40" height="40"/> </a>
 <a href="https://www.postgresql.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=VMRAbKfEzssG&format=png&color=000000" alt="postgresql" width="40" height="40"/> </a>
 <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
