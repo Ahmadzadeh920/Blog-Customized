@@ -3,12 +3,10 @@
 <h3 align="center">Sample Project with base usage and deployment</h3>
 </div>
 <p align="center">
-<a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=mUBILbYvUMq8&format=png&color=000000" alt="python" width="40" height="40"/> </a>
-<a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=qV-JzWYl9dzP&format=png&color=000000" alt="python" width="40" height="40"/> </a>
-
-<a href="https://www.docker.com/" target="_blank"> <img src="https://img.icons8.com/?size=100&id=zFAYIdFZlGxP&format=png&color=000000" alt="docker" width="40" height="40"/> </a>
-<a href="https://www.postgresql.org" target="_blank"> <img src="https://img.icons8.com/?size=100&id=VMRAbKfEzssG&format=png&color=000000" alt="postgresql" width="40" height="40"/> </a>
-<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
+<a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a>
+<a href="https://fastapi.tiangolo.com/" target="_blank"> <img src="https://styles.redditmedia.com/t5_22y58b/styles/communityIcon_r5ax236rfw961.png" alt="fastapi" width="40" height="40"/> </a>
+<a href="https://www.docker.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a>
+<a href="https://www.postgresql.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a>
 </p>
 
 # Guideline
