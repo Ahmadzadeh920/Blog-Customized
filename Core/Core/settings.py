@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +41,9 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
+     #Panel admin
+    'jazzmin',
+    # panel users
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -49,6 +53,17 @@ INSTALLED_APPS = [
     "accounts",
     "blog",
     "rest_framework",
+    "django_filters",
+    "drf_yasg",
+    'allauth',
+    'allauth.account',
+     # Optional -- requires install using `django-allauth[socialaccount]`.
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+   
+     
 ]
 
 MIDDLEWARE = [
@@ -59,6 +74,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "Core.urls"
@@ -149,3 +166,78 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # DEFINE CLASS MODELS for customized autorizations
 AUTH_USER_MODEL = "accounts.CustomUser"
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+
+# settings for authentication rest_framework
+
+REST_FRAMEWORK = {
+     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema", # this is for coreapi for documentations of api versions
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    '''DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],'''
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
+
+# this setting for swagger documentation api view
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic'
+        }
+    }
+}
+
+# this setting for authentication (allauth module)
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        }
+    }
+}
+
+
+#Setting Emails for sending
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
+EMAIL_USE_TLS = True
+
+#EMAIL_HOST_USER = 'your_email_username'
+#EMAIL_HOST_PASSWORD = 'your_email_password'
+
+
+## setting of simpleJWT
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=8),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": True,
+    }

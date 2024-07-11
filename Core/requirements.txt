@@ -1,11 +1,32 @@
+# general  modules
 django==4.2
-tzdata-2024.1
+tzdata
+setuptools
 python-decouple
+Pillow
+
+
+# third party modules
 djangorestframework
 markdown       # Markdown support for the browsable API.
 django-filter  # Filtering support
+drf-yasg[validation]
 
+# authorization 
+django-allauth
+django-allauth[socialaccount]
 
 # refactoring
-flack8
+flake8
 black
+
+
+# documentations
+coreapi
+
+# JWT
+djangorestframework-simplejwt
+
+
+# admin Panel 
+django-jazzmin

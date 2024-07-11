@@ -12,7 +12,7 @@ from django.dispatch import receiver
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-
+    username = None
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     created_at = models.DateField(default=timezone.now)
@@ -46,3 +46,8 @@ class Profile(models.Model):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
+            
+class PasswordReset(models.Model):
+    email = models.EmailField()
+    token = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)

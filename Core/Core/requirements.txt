@@ -4,3 +4,7 @@ Pillow
 pip djangorestframework
 pip install markdown       # Markdown support for the browsable API.
 pip install django-filter  # Filtering support
+
+
+# SMTP 
+django-smtp-server

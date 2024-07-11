@@ -17,8 +17,7 @@
        <h3><a href="{% url 'blog:DetailPostView' pk=post.id %}">   {{post.title}}</a></h3><br />
         {{post.body}}<br />
         {{post.created_date}}<br/>
-        <h4><a href="{% url 'blog:PostEditView' pk=post.id %}">   Edit</a></h4>
-        <h4><a href="{% url 'blog:PostDeleteView' pk=post.id %}">   Delete</a></h4><br />
+        <h4><a href="{% url 'blog:PostEditView' pk=post.id %}">   Edit</a></h4><h4><a href="{% url 'blog:PostDeleteView' pk=post.id %}">   Delete</a></h4><br />
 
         
         </li>
