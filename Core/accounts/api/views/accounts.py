@@ -1,18 +1,22 @@
 from django.core import exceptions
 from django.core.mail import EmailMessage
+from django.shortcuts import get_object_or_404
+
 from rest_framework.exceptions import ValidationError
 from rest_framework import viewsets, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from .serializers import ( RegistrationSerializer,
+from ..serializers import ( RegistrationSerializer,
                           CustomeAuthTokenSerializer ,
                           ResetPasswordRequestSerializer,
                           ResetPasswordSerializer, 
                           ChangePasswordSerializer, 
-                          Customized_TOKEN_OBTAIN_PAIR_SERIALIZER
+                          Customized_TOKEN_OBTAIN_PAIR_SERIALIZER,
+                          Profile_Serializer
                           )
+
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework_simplejwt.views import (
@@ -23,6 +27,7 @@ from rest_framework_simplejwt.views import (
 
 
 from ...models import CustomUser, PasswordReset, Profile
+from ..permissions 
 import os
 
 
@@ -140,7 +145,4 @@ class ChangePasswordView(generics.UpdateAPIView):
     
 # this class for custimized JWT   
 class CustimizedTokenObtainPairView(TokenObtainPairView):
-        serializer_class = Customized_TOKEN_OBTAIN_PAIR_SERIALIZER
-    
-class ProfileAPIView():
-    pass
+    serializer_class = Customized_TOKEN_OBTAIN_PAIR_SERIALIZER

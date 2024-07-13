@@ -26,7 +26,12 @@ coreapi
 
 # JWT
 djangorestframework-simplejwt
+PyJWT
 
 
 # admin Panel 
 django-jazzmin
+
+
+#email third party
+django-mail-templated

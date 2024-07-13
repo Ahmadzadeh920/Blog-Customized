@@ -42,7 +42,7 @@ ALLOWED_HOSTS = config(
 
 INSTALLED_APPS = [
      #Panel admin
-    'jazzmin',
+    #'jazzmin',
     # panel users
     "django.contrib.admin",
     "django.contrib.auth",
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'mail_templated'
    
      
 ]
@@ -225,13 +226,15 @@ SOCIALACCOUNT_PROVIDERS = {
 
 #Setting Emails for sending
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = '1025'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp4dev'
+EMAIL_PORT = '25'
+EMAIL_USE_TLS = False
 
-#EMAIL_HOST_USER = 'your_email_username'
-#EMAIL_HOST_PASSWORD = 'your_email_password'
-
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+#  reset password 
+PASSWORD_RESET_BASE_URL = 'http://127.0.0.1:8000/accounts/api/v1/token/reset/'
+PASSWORD_ACTIVE_BASE_URL = 'http://127.0.0.1:8000/accounts/api/v1/activate/jwt/'
 
 ## setting of simpleJWT
 SIMPLE_JWT = {

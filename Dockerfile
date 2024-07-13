@@ -26,8 +26,8 @@ RUN pip install django-allauth
 RUN pip install django-allauth[socialaccount]
 RUN pip install djangorestframework-simplejwt
 RUN pip install -U django-jazzmin
-
-
+RUN pip install -U django-mail-templated
+RUN pip install PyJWT
 
 
 

@@ -17,17 +17,19 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "is_staff",
         "is_active",
+        "is_verified"
     )
     list_filter = (
         "email",
         "is_staff",
         "is_active",
+         "is_verified"
     )
     fieldsets = (
         ("Autorization", {"fields": ("email", "password")}),
         (
             "Permissions",
-            {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
+            {"fields": ("is_staff", "is_active", "groups", "user_permissions" , 'is_verified')},
         ),
     )
     add_fieldsets = (
@@ -43,6 +45,7 @@ class CustomUserAdmin(UserAdmin):
                     "is_active",
                     "groups",
                     "user_permissions",
+                     "is_verified"
                 ),
             },
         ),
