@@ -41,8 +41,8 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
-     #Panel admin
-    #'jazzmin',
+    # Panel admin
+    "jazzmin",
     # panel users
     "django.contrib.admin",
     "django.contrib.auth",
@@ -55,16 +55,15 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "drf_yasg",
-    'allauth',
-    'allauth.account',
-     # Optional -- requires install using `django-allauth[socialaccount]`.
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
-    'mail_templated'
-   
-     
+    "allauth",
+    "allauth.account",
+    # Optional -- requires install using `django-allauth[socialaccount]`.
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "rest_framework.authtoken",
+    "rest_framework_simplejwt",
+    "mail_templated",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -170,71 +169,58 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
 # settings for authentication rest_framework
 
 REST_FRAMEWORK = {
-     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema", # this is for coreapi for documentations of api versions
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",  # this is for coreapi for documentations of api versions
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    '''DEFAULT_PERMISSION_CLASSES': [
+    """DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ],'''
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],"""
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 # this setting for swagger documentation api view
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Basic': {
-            'type': 'basic'
-        }
-    }
-}
+SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": {"Basic": {"type": "basic"}}}
 
 # this setting for authentication (allauth module)
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-    
+    "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
+    "google": {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
+        "APP": {"client_id": "123", "secret": "456", "key": ""}
     }
 }
 
 
-#Setting Emails for sending
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp4dev'
-EMAIL_PORT = '25'
+# Setting Emails for sending
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp4dev"
+EMAIL_PORT = "25"
 EMAIL_USE_TLS = False
 
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-#  reset password 
-PASSWORD_RESET_BASE_URL = 'http://127.0.0.1:8000/accounts/api/v1/token/reset/'
-PASSWORD_ACTIVE_BASE_URL = 'http://127.0.0.1:8000/accounts/api/v1/activate/jwt/'
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+#  reset password
+PASSWORD_RESET_BASE_URL = "http://127.0.0.1:8000/accounts/api/v1/token/reset/"
+PASSWORD_ACTIVE_BASE_URL = "http://127.0.0.1:8000/accounts/api/v1/activate/jwt/"
 
 ## setting of simpleJWT
 SIMPLE_JWT = {
@@ -243,4 +229,8 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": True,
-    }
+}
+# djoser settings
+DJOSER = {
+    "LOGIN_FIELD": "email",
+}

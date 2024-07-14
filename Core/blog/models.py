@@ -23,21 +23,23 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
-    
+
     # this function is called for fields snippets
     def get_snippet(self):
         # get the full text you want to create a snippet from
-        full_text = self.body  # replace field_name with the actual field name containing the text
-        
+        full_text = (
+            self.body
+        )  # replace field_name with the actual field name containing the text
+
         # define the number of words to include in the snippet
         word_limit = 20
-        
+
         # split the full text into words
         words = full_text.split()
         # create the snippet from the first few words
-        snippet = ' '.join(words[:word_limit])
+        snippet = " ".join(words[:word_limit])
         return snippet
+
     def get_absolute_api_url(self):
         return reverse("blog:api-v1:post-detail", kwargs={"pk": self.id})
 

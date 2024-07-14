@@ -24,7 +24,9 @@ urlpatterns = [
     # this Url for edit Post
     path("list/<int:pk>/edit/", views.PostEditView.as_view(), name="PostEditView"),
     # this Url for delete Post
-    path("list/<int:pk>/delete/", views.PostDeleteView.as_view(), name="PostDeleteView" ),
+    path(
+        "list/<int:pk>/delete/", views.PostDeleteView.as_view(), name="PostDeleteView"
+    ),
     # this URL  for api version 1
-    path('api-v1/', include('blog.api.v1.urls')),
+    path("api-v1/", include("blog.api.v1.urls")),
 ]

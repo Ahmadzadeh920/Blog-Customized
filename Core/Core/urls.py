@@ -27,8 +27,6 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 
-
-
 schema_view = get_schema_view(
     openapi.Info(
         title="Blog Api",
@@ -43,18 +41,13 @@ schema_view = get_schema_view(
 )
 
 
-
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include("blog.urls")),
-    path('accounts/', include('accounts.urls')),
-    #login in rest_framework
+    path("accounts/", include("accounts.urls")),
+    # login in rest_framework
     path("api-auth/", include("rest_framework.urls")),
-   
-     
-     
-      # This path for api  documentations 
+    # This path for api  documentations
     path(
         "swagger/output.json",
         schema_view.without_ui(cache_timeout=0),
@@ -70,7 +63,6 @@ urlpatterns = [
         schema_view.with_ui("redoc", cache_timeout=0),
         name="schema-redoc",
     ),
-    
 ]
 # add static paths to urls
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
