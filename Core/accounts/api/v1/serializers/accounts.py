@@ -73,9 +73,18 @@ class CustomeAuthTokenSerializer(serializers.Serializer):
         attrs['user'] = user
         return attrs
     
-# this serializer for sending request email notifications for reseting password    
-class ResetPasswordRequestSerializer(serializers.Serializer):
+# this serializer for sending request email notifications for reseting password  and resend activation  
+class EmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
+    
+    def validate(self , attrs):
+        email = attrs.get('email')
+        try:
+            user_obj = CustomUser.objects.get(email = email)
+        except CustomUser.DoesNotExist:
+            raise serializers.ValidationError
+        attrs['user'] = user_obj
+        return super().validate(attrs)
  
  
  # this serializer for reseting password   

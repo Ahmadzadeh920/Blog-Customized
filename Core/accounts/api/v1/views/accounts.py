@@ -11,7 +11,7 @@ from rest_framework.authtoken.models import Token
 import jwt
 from ..serializers import ( RegistrationSerializer,
                           CustomeAuthTokenSerializer ,
-                          ResetPasswordRequestSerializer,
+                          EmailRequestSerializer,
                           ResetPasswordSerializer, 
                           ChangePasswordSerializer, 
                           Customized_TOKEN_OBTAIN_PAIR_SERIALIZER,
@@ -53,7 +53,7 @@ class RegisterationApiview(generics.GenericAPIView):
                
                 'message' : 'plase click this linl for activation of account '+'<br/> '+str(reset_url)
                } 
-            Email_obj= EmailMessage('email/activation_password.tpl', data , from_email, to= [serializer.validated_data["email"]])
+            Email_obj= EmailMessage('email/activation_accounts.tpl', data , from_email, to= [serializer.validated_data["email"]])
             EmailThread(Email_obj).start()
             
             return Response(data= {'detail':'email send'} , status= status.HTTP_200_OK)
@@ -100,11 +100,12 @@ class AuthDiscardedToken(APIView):
 # this class is customized reset password 
 class RequestPasswordReset(generics.GenericAPIView):
     permission_classes = [AllowAny]
-    serializer_class = ResetPasswordRequestSerializer
+    serializer_class = EmailRequestSerializer
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         email = request.data['email']
-        user = CustomUser.objects.filter(email__iexact=email).first()
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
         if not user: 
              return Response({"error": "User with credentials not found"}, status=status.HTTP_404_NOT_FOUND)
         else:
@@ -168,11 +169,11 @@ class CustimizedTokenObtainPairView(TokenObtainPairView):
     
     
 class RequestPasswordResetJWT(generics.GenericAPIView):
-    serializer_class = ResetPasswordRequestSerializer
+    serializer_class = EmailRequestSerializer
     def post(self,request, *args, **kwargs):
-        serializer= ResetPasswordRequestSerializer(data= request.data)
+        serializer= EmailRequestSerializer(data= request.data)
         serializer.is_valid(raise_exception=True)
-        obj_user = get_object_or_404(CustomUser, email= serializer.validated_data["email"])
+        obj_user = serializer.validated_data['user']
         token = self.get_token_for_user(obj_user)
         reset_url = settings.PASSWORD_RESET_BASE_URL + str(token)
         data = {
@@ -219,14 +220,14 @@ class ActivationAccountJWT(APIView):
         
         
 # this class for resend accounts     
-class ResendActivationAccountJWT(APIView):
-    serializer_class= ResetPasswordRequestSerializer
+class ResendActivationAccountJWT(generics.GenericAPIView):
+    serializer_class= EmailRequestSerializer
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
        
         email= request.data.get('email')
         serializer.is_valid(raise_exception=True)
-        user_obj = get_object_or_404(CustomUser, email=email)
+        user_obj = serializer.validated_data['user']
         if not user_obj.is_verified:
             token = self.get_token_for_user(user_obj)
             reset_url = settings.PASSWORD_ACTIVE_BASE_URL + str(token)
@@ -235,7 +236,7 @@ class ResendActivationAccountJWT(APIView):
                 
                     'message' : 'plase click this linl for activation of account '+'<br/> '+str(reset_url)
                 } 
-            Email_obj= EmailMessage('email/activation_password.tpl', data , from_email, to= [serializer.validated_data["email"]])
+            Email_obj= EmailMessage('email/activation_accounts.tpl', data , from_email, to= [user_obj.email])
             EmailThread(Email_obj).start()
                 
             return Response(data= {'detail':'email send'} , status= status.HTTP_200_OK)

@@ -15,6 +15,7 @@ drf-yasg[validation]
 # authorization 
 django-allauth
 django-allauth[socialaccount]
+djoser
 
 # refactoring
 flake8
