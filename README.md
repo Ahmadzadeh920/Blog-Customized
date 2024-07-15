@@ -1,5 +1,5 @@
 <div align="center">
-<h1 align="center">Customized Blog (template-based and restframework)</h1>
+<h1 align="center">Customized Blogn and Authenticatiobn  (class-based and restframework)</h1>
 <h3 align="center">Sample Project with base usage and deployment</h3>
 </div>
 <p align="center">
