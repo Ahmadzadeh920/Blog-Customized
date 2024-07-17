@@ -38,3 +38,7 @@ django-jazzmin
 
 #email third party
 django-mail-templated
+
+
+# data
+Faker
