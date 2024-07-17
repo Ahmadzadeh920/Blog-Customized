@@ -19,10 +19,9 @@ def api_client():
     return client
 
 
-
 @pytest.mark.django_db
 class TestPostApi:
-  
+
     client = APIClient()
 
     @pytest.fixture
@@ -30,7 +29,6 @@ class TestPostApi:
         url = reverse("blog:api-v1:post-list")
         response = self.client.get(url)
         assert response.status_code == 200
-
 
     # authentication is forbidden
     def test_create_post_response_401_status(self):
