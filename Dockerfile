@@ -29,6 +29,8 @@ RUN pip install -U django-jazzmin
 RUN pip install -U django-mail-templated
 RUN pip install PyJWT
 RUN pip install djoser
+RUN pip install pytest
+RUN pip install pytest-django
 
 
 
