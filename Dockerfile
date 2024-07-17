@@ -6,7 +6,7 @@ WORKDIR /app
 COPY requirements.txt /Core/
 
 
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 
 
 RUN pip install django==4.2
