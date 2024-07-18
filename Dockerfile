@@ -31,6 +31,7 @@ RUN pip install PyJWT
 RUN pip install djoser
 RUN pip install pytest
 RUN pip install pytest-django
+RUN pip install Faker
 
 
 
