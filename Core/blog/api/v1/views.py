@@ -59,7 +59,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.filter(status=True)
     serializer_class = PostSerializer
     pagination_class = DefaultPagination
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
