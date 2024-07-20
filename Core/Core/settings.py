@@ -234,3 +234,7 @@ SIMPLE_JWT = {
 DJOSER = {
     "LOGIN_FIELD": "email",
 }
+
+
+# celery 
+CELERY_BROKER_URL = 'redis://redis:6379/1'

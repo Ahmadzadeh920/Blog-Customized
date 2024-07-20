@@ -42,3 +42,8 @@ django-mail-templated
 
 # data
 Faker
+
+
+# background Process and cache
+celery
+Redis
