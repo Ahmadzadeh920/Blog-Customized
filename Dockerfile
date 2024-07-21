@@ -34,7 +34,8 @@ RUN pip install pytest-django
 RUN pip install Faker
 RUN pip install celery
 RUN pip install Redis
-
+RUN pip install django-celery-beat
+RUN pip install django-redis
 
 
 

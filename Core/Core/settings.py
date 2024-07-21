@@ -246,3 +246,16 @@ CELERY_BROKER_URL = 'redis://redis:6379/1'
         'schedule': timedelta(seconds=60),  # Run every 60 seconds
     },
 }'''
+
+
+# chach 
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
