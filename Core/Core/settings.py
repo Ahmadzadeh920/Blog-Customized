@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "mail_templated",
     "djoser",
+    "django_celery_beat"
 ]
 
 MIDDLEWARE = [
@@ -234,3 +235,14 @@ SIMPLE_JWT = {
 DJOSER = {
     "LOGIN_FIELD": "email",
 }
+
+
+# celery 
+CELERY_BROKER_URL = 'redis://redis:6379/1'
+
+'''CELERY_BEAT_SCHEDULE = {
+    'task-name': {
+        'task': 'accounts.tasks.sendEmail',
+        'schedule': timedelta(seconds=60),  # Run every 60 seconds
+    },
+}'''

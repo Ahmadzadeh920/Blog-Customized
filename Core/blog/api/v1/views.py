@@ -12,6 +12,7 @@ from rest_framework.permissions import (
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from ...models import Post
 from accounts.models import Profile
 from .serializer import PostSerializer
@@ -27,7 +28,7 @@ User = get_user_model()
 # this viewset is similar to APIView which for any method request, you can use one function
 # in viewset, default permission_classes is is_authenticated
 class PostViewSet(viewsets.ViewSet):
-    # permission_classes = []
+    permission_classes = [AllowAny]
     def list(self, request):
         queryset = Post.objects.all()
         serializer = PostSerializer(queryset, many=True)
@@ -58,7 +59,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.filter(status=True)
     serializer_class = PostSerializer
     pagination_class = DefaultPagination
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
