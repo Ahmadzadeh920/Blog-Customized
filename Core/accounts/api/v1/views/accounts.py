@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 import jwt
 from ..serializers import (
     RegistrationSerializer,
@@ -79,7 +81,9 @@ class RegisterationApiview(generics.GenericAPIView):
 # this class is customized login
 class ObtainAuthToken_Customized(ObtainAuthToken):
     serializer_class = CustomeAuthTokenSerializer
-
+    
+    
+    @method_decorator(cache_page(60))
     def post(self, request, *args, **kwargs):
 
         serializer = self.serializer_class(
@@ -89,6 +93,7 @@ class ObtainAuthToken_Customized(ObtainAuthToken):
         user = serializer.validated_data["user"]
         token, created = Token.objects.get_or_create(user=user)
         return Response({"token": token.key, "user_id": user.id, "email": user.email})
+    
 
 
 # this class is customized logout

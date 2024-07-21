@@ -47,3 +47,7 @@ Faker
 # background Process and cache
 celery
 Redis
+django-celery-beat # for bothe backend and worker  
+django-redis # for bothe backend and worker  
+
+
