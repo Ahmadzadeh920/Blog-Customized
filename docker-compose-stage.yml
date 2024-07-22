@@ -11,7 +11,8 @@ services:
   backend:
     build: .
     container_name: backend
-    command: python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic && gunicorn myproject.wsgi --bind 0.0.0.0:8000
+    command: gunicorn myproject.wsgi --bind 0.0.0.0:8000
+    #command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./core:/app
     ports:
@@ -22,15 +23,18 @@ services:
     depends_on:
       - redis
     
-  
-  worker:
-      build: .
-      command: celery -A Core worker --loglevel=info
-      volumes:
-        - ./core:/app
-      depends_on:
-        - redis
-        - backend
+
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports: 
+      - "80:80"
+    
+    depends_on:
+      - redis
+      - backend
       
 
 

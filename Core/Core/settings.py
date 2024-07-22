@@ -240,12 +240,12 @@ DJOSER = {
 # celery 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
 
-'''CELERY_BEAT_SCHEDULE = {
+CELERY_BEAT_SCHEDULE = {
     'task-name': {
         'task': 'accounts.tasks.sendEmail',
         'schedule': timedelta(seconds=60),  # Run every 60 seconds
     },
-}'''
+}
 
 
 # chach 

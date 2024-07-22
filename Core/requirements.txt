@@ -50,4 +50,5 @@ Redis
 django-celery-beat # for bothe backend and worker  
 django-redis # for bothe backend and worker  
 
-
+# deployment
+gunicorn
