@@ -8,16 +8,27 @@ services:
       - "6379:6379"
     command: redis-server --save 60 1 --loglevel warning
 
+  db:
+      image: postgres:latest
+      container_name: POSTGRES_DB
+      environment:
+        POSTGRES_DB: Customized-Blog-db
+        POSTGRES_USER: admin_db
+        POSTGRES_PASSWORD: as@123456
+      volumes:
+        - ./data/db:/var/lib/postgresql/data/
+
   backend:
-    build: .
-    container_name: backend
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./core:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - redis
+      build: .
+      container_name: backend
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - ./core:/app
+      ports:
+        - "8000:8000"
+      depends_on:
+        - redis
+        - db
     
   
   worker:

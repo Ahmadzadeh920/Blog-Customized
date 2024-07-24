@@ -7,11 +7,22 @@ services:
     ports:
       - "6379:6379"
     command: redis-server --save 60 1 --loglevel warning
+  
+
+  db:
+    image: postgres:latest
+    container_name: POSTGRES_DB
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
 
   backend:
     build: .
     container_name: backend
-    command: gunicorn Core.wsgi --bind 0.0.0.0:8000
+    command: python manage.py makemigrations && python manage.py migrate && gunicorn Core.wsgi --bind 0.0.0.0:8000
     #command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./core:/app
@@ -25,8 +36,11 @@ services:
       - SECRET_KEY= test
     depends_on:
       - redis
+      - db
     
 
+
+  
 
   nginx:
     image: nginx

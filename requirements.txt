@@ -6,6 +6,9 @@ python-decouple
 Pillow
 
 
+#database
+psycopg2-binary
+
 # third party modules
 djangorestframework
 markdown       # Markdown support for the browsable API.
