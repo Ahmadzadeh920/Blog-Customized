@@ -12,17 +12,23 @@ services:
   db:
     image: postgres:latest
     container_name: POSTGRES_DB
+    restart: always
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+     
     volumes:
       - ./data/db:/var/lib/postgresql/data/
 
   backend:
     build: .
     container_name: backend
-    command: python manage.py makemigrations && python manage.py migrate && gunicorn Core.wsgi --bind 0.0.0.0:8000
+    command: python manage.py makemigrations &&
+            python manage.py migrate &&
+            gunicorn Core.wsgi --bind 0.0.0.0:8000
     #command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./core:/app
@@ -32,12 +38,16 @@ services:
     expose:
       - "8000"
     environment:
-      - Debug=False
-      - SECRET_KEY= test
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASSWORD}
+      - SECRET_KEY=test
     depends_on:
       - redis
       - db
-    
+    networks:
+      - default
 
 
   
@@ -64,5 +74,7 @@ volumes:
 
 
 
-
+networks:
+  default:
+    driver: bridge
 
