@@ -48,7 +48,9 @@ This project main goal is to show you how we can use django rest api to create a
   - [Check it out in a browser](#check-it-out-in-a-browser)
 - [Testing Usage](#testing-usage)
   - [running all tests](#running-all-tests)
-
+- [CICD Deployment](#cicd-deployment)
+  - [Github CICD](#github-cicd)
+  - [Gitlab/Hamgit CICD](#gitlabhamgit-cicd)
  
 - [License](#license)
 - [Bugs](#bugs)
@@ -265,6 +267,21 @@ something on your machine is already running on port 8000. then you have to chan
 
 Visit <http://localhost:8000> in your favorite browser.
 
+# Testing Usage
+## running all tests
+```bash
+docker compose run --rm backend sh -c " black -l 79 && flake8 && python manage.py test" -v core:/app
+```
+or
+```bash
+docker compose exec backend sh -c sh -c " black -l 79 && flake8 && python manage.py test" 
+```
+# CICD Deployment
+For the sake of continuous integration and deployment i have provided two samples for github and gitlab/hamgit for you.
+but there will be some configurations to be added for building and deploying purposes.
+
+## Github CICD
+will be provided soon
 
 
 
