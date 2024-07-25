@@ -9,27 +9,13 @@ services:
     command: redis-server --save 60 1 --loglevel warning
   
 
-  db:
-    image: postgres:latest
-    container_name: POSTGRES_DB
-    restart: always
-    environment:
-      POSTGRES_DB: Blog_customized_db
-      POSTGRES_USER: user_test
-      POSTGRES_PASSWORD: 123
-    ports:
-      - "5432:5432"
-     
-    volumes:
-      - ./data/db:/var/lib/postgresql/data/
+  
 
   backend:
     build: .
     container_name: backend
-    command: python manage.py makemigrations &&
-            python manage.py migrate &&
-            gunicorn Core.wsgi --bind 0.0.0.0:8000
-    #command: python manage.py runserver 0.0.0.0:8000
+    
+  
     volumes:
       - ./core:/app
       - static_volume:/app/static
@@ -39,15 +25,23 @@ services:
       - "8000"
     environment:
      
-      - SECRET_KEY=test
+      - SECRET_KEY=${SECRET_KEY}
     depends_on:
       - redis
-      - db
+   
+    command: gunicorn Core.wsgi --bind 0.0.0.0:8000
+     #command: python manage.py runserver 0.0.0.0:8000
     networks:
       - default
 
-
-  
+  worker:
+        build: .
+        command: celery -A Core worker --loglevel=info
+        volumes:
+          - ./core:/app
+        depends_on:
+          - redis
+          - backend 
 
   nginx:
     image: nginx

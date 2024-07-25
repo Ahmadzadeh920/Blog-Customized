@@ -38,6 +38,7 @@ RUN pip install django-celery-beat
 RUN pip install django-redis
 RUN pip install gunicorn
 RUN pip install psycopg2-binary
+RUN pip install psycopg2-binary
 
 
 

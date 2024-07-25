@@ -27,8 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-i6ip6b%nk!*8w=a@gvvy$(5i+5#ior%($o63lw^+v7yses1l@t'
 # default test for testing purposes in vscode
-SECRET_KEY = config("SECRET_KEY", default="test")
-#SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = config("SECRET_KEY", default="test")
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # default True for testing purposes in vscode
 DEBUG = config("DEBUG", cast=bool, default=True)
@@ -105,7 +105,7 @@ WSGI_APPLICATION = "Core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
@@ -115,17 +115,10 @@ WSGI_APPLICATION = "Core.wsgi.application"
         "PORT": os.getenv("DB_PORT"),
     }
 }
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Engine for PostgreSQL
-        'NAME': 'Blog_customized_db',                # Replace with your database name
-        "USER": 'user_test',
-        "PASSWORD": '123',       # Replace with your database password
-        'HOST': 'POSTGRES_DB' ,                       # Set to 'localhost' or your database server address
-        'PORT':'5432' ,                           # Default PostgreSQL port
-    }
-}
+
+
+
+
 
 
 # Password validation
