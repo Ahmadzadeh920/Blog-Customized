@@ -14,9 +14,9 @@ services:
     container_name: POSTGRES_DB
     restart: always
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: Blog_customized_db
+      POSTGRES_USER: user_test
+      POSTGRES_PASSWORD: 123
     ports:
       - "5432:5432"
      
@@ -38,10 +38,7 @@ services:
     expose:
       - "8000"
     environment:
-      - DB_HOST=db
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASS=${DB_PASSWORD}
+     
       - SECRET_KEY=test
     depends_on:
       - redis

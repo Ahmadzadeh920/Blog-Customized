@@ -120,10 +120,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # Engine for PostgreSQL
         'NAME': 'Blog_customized_db',                # Replace with your database name
-        "USER": config("DB_USER"),
+        "USER": 'user_test',
         "PASSWORD": '123',       # Replace with your database password
         'HOST': 'POSTGRES_DB' ,                       # Set to 'localhost' or your database server address
-        'PORT': config('DB_PORT')                              # Default PostgreSQL port
+        'PORT':'5432' ,                           # Default PostgreSQL port
     }
 }
 
