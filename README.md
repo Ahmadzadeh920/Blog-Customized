@@ -17,18 +17,6 @@
 
 </p>
 
-# Guideline
-- [Guideline](#Guideline)
-- [Features](#goal)
-- [Development usage](#development-usage)
-  - [Clone the repo](#clone-the-repo)
-  - [Enviroment Varibales](#enviroment-varibales)
-  - [Build everything](#build-everything)
-
-- [Testing Usage](#testing-usage)
-  - [running all tests](#running-all-tests)
-- [License](#license)
-- [Bugs](#bugs)
 
 
 
@@ -50,7 +38,7 @@ This project main goal is to show you how we can use django rest api to create a
   - [running all tests](#running-all-tests)
 - [CICD Deployment](#cicd-deployment)
   - [Github CICD](#github-cicd)
-  - [Gitlab/Hamgit CICD](#gitlabhamgit-cicd)
+  
  
 - [License](#license)
 - [Bugs](#bugs)
@@ -277,14 +265,11 @@ or
 docker compose exec backend sh -c sh -c " black -l 79 && flake8 && python manage.py test" 
 ```
 # CICD Deployment
-For the sake of continuous integration and deployment i have provided two samples for github and gitlab/hamgit for you.
+For the sake of continuous integration and deployment i have provided two samples for github  for you.
 but there will be some configurations to be added for building and deploying purposes.
 
 ## Github CICD
 will be provided soon
-
-
-
 
 # License
 MIT.
