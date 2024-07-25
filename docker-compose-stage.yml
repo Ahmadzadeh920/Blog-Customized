@@ -24,8 +24,7 @@ services:
     expose:
       - "8000"
     environment:
-     
-      - SECRET_KEY=${SECRET_KEY}
+      - SECRET_KEY:${SECRET_KEY}
     depends_on:
       - redis
    
@@ -34,14 +33,18 @@ services:
     networks:
       - default
 
+  
   worker:
-        build: .
-        command: celery -A Core worker --loglevel=info
-        volumes:
-          - ./core:/app
-        depends_on:
-          - redis
-          - backend 
+      build: .
+      command: celery -A Core worker --loglevel=info
+      volumes:
+        - ./core:/app
+      depends_on:
+        - redis
+        - backend
+      
+
+
 
   nginx:
     image: nginx
