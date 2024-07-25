@@ -27,8 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-i6ip6b%nk!*8w=a@gvvy$(5i+5#ior%($o63lw^+v7yses1l@t'
 # default test for testing purposes in vscode
-SECRET_KEY = config("SECRET_KEY", default="test_secret")
-
+SECRET_KEY = config("SECRET_KEY", default="test")
+#SECRET_KEY = os.getenv("SECRET_KEY", default="test")
 # SECURITY WARNING: don't run with debug turned on in production!
 # default True for testing purposes in vscode
 DEBUG = config("DEBUG", cast=bool, default=True)
@@ -115,6 +115,10 @@ DATABASES = {
         "PORT": os.getenv("DB_PORT"),
     }
 }
+
+
+
+
 
 
 # Password validation
@@ -239,14 +243,14 @@ DJOSER = {
 
 # celery 
 CELERY_BROKER_URL = 'redis://redis:6379/1'
-
-'''CELERY_BEAT_SCHEDULE = {
+'''
+CELERY_BEAT_SCHEDULE = {
     'task-name': {
         'task': 'accounts.tasks.sendEmail',
         'schedule': timedelta(seconds=60),  # Run every 60 seconds
     },
-}'''
-
+}
+'''
 
 # chach 
 

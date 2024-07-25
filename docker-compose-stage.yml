@@ -1,0 +1,74 @@
+version: "3.9"
+services:
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+  
+
+  
+
+  backend:
+    build: .
+    container_name: backend
+    
+  
+    volumes:
+      - ./core:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+
+    expose:
+      - "8000"
+    environment:
+      - SECRET_KEY:${SECRET_KEY}
+    depends_on:
+      - redis
+   
+    command: gunicorn Core.wsgi --bind 0.0.0.0:8000
+     #command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - default
+
+  
+  worker:
+      build: .
+      command: celery -A Core worker --loglevel=info
+      volumes:
+        - ./core:/app
+      depends_on:
+        - redis
+        - backend
+      
+
+
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports: 
+      - "80:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      #app since in Dockerfile workdie is /app
+      - static_volume:/home/app/static
+      - media_volume:/home/app/media
+    depends_on:
+      - redis
+      - backend
+
+# this is introduced common volume
+volumes:
+  static_volume:
+  media_volume:
+
+
+
+networks:
+  default:
+    driver: bridge
+
