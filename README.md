@@ -6,6 +6,8 @@
 <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a>
 <a href="https://www.docker.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a>
 <a href="https://www.django-rest-framework.org/" target="_blank"> <img src="https://img.icons8.com/?size=100&id=79865&format=png&color=000000" alt="rest-framework" width="40" height="40"/> </a>
+<a href="https://redis.io/" target="_blank"> <img src="https://img.icons8.com/?size=100&id=FMw01QDk8Qlu&format=png&color=000000" alt="rest-framework" width="40" height="40"/> </a>
+<a href="https://docs.celeryq.dev/en/stable//" target="_blank"> <img src="https://docs.celeryq.dev/en/stable/_static/celery_512.png" alt="rest-framework" width="40" height="40"/> </a>
 
 </p>
 
