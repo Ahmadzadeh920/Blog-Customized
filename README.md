@@ -1,5 +1,5 @@
 <div align="center">
-<h1 align="center">Customized Blogn and Authenticatiobn  (class-based and restframework)</h1>
+<h1 align="center">Customized Blog and Authenticatiobn  (class-based and restframework)</h1>
 <h3 align="center">Sample Project with base usage and deployment</h3>
 </div>
 <p align="center">
@@ -21,7 +21,27 @@
 
 
 # Introduction
-This project main goal is to show you how we can use django rest api to create a base blog app with customized authentications and all base needs.
+This project main goal is to show you how we can use django rest api to create a base blog app with customized authentications(JWT and Token) and all base needs.
+This project includes:
+- Introduction of the course
+- Setting up project with Docker (dockerfile/docker-compose)
+- Setup Django Model for a Blog and AbstractBaseUser
+- Implement Class Based Views
+- Django RestFramework and Serializers (FBV)
+- ClassBasedViews in RestFramework (views,generic,viewset)
+- Api Documentation with swagger and redoc
+- Authentication API (Token/JWT)
+- Reformat and Lint (flake8,black)
+- Django TestCase and PyTest
+- Django CI with github actions
+- Populate Database with Faker and Django Commands
+- Cores Headers
+- Load Testing with Locust
+- Background process with celery and redis
+- Cacheing with redis
+- Get ready for deploy (gunicorn/nginx)
+
+
 
 
 
