@@ -21,7 +21,7 @@
 
 
 # Introduction
- main goal of this project is to show you how we can use django rest api to create a base blog app with customized authentications(JWT and Token) and all base needs.
+ The main goal of this project is to show you how we can use django rest api to create a base blog app with customized authentications(JWT and Token) and all base needs.
 This project includes:
 - Setting up project with Docker (dockerfile/docker-compose)
 - Setup Django Model for a Blog and AbstractBaseUser
