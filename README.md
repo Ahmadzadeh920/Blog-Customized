@@ -26,7 +26,6 @@ This project includes:
 - Setting up project with Docker (dockerfile/docker-compose)
 - Setup Django Model for a Blog and AbstractBaseUser
 - Implement Class Based Views
-- Django RestFramework and Serializers (FBV)
 - ClassBasedViews in RestFramework (views,generic,viewset)
 - Api Documentation with swagger and redoc
 - Authentication API (Token/JWT)
