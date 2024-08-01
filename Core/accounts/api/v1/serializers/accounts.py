@@ -79,7 +79,7 @@ class EmailRequestSerializer(serializers.Serializer):
         email = attrs.get("email")
         try:
             user_obj = CustomUser.objects.get(email=email)
-        except CustomUser.DoesNotExist:
+        except user_obj.DoesNotExist:
             raise serializers.ValidationError
         attrs["user"] = user_obj
         return super().validate(attrs)
