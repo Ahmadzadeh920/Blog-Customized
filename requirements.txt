@@ -39,3 +39,6 @@ django-jazzmin
 
 #email third party
 django-mail-templated
+
+# development
+gunicorn
